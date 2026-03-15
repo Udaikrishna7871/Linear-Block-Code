@@ -2,7 +2,7 @@
 # Aim
 Write a simple python program to Generate Matrix, Codeword, Hamming weight, Syndrome matrix and find the error on received codeword using Linear block code. 
 # Tools required
- Google coLab 
+Python IDE
 # Program
 ```
 import numpy as np
@@ -40,7 +40,7 @@ d_min = np.min(np.sum(c[1:], axis=1))
 h = p_mat[:, :3]
 hp = np.hstack((np.eye(n-k, dtype=int), h.T))
 ht = hp.T
-print('**********')
+print('')
 print('The Generator Matrix is: ')
 #for r in p_mat: 
 #    print(" ".join(map(str, r)))
@@ -48,20 +48,20 @@ print('The Generator Matrix is: ')
 #    print(" ".join(map(str, r)))
 for r in g_mat: 
     print(" ".join(map(str, r)))
-print('**********')
+print('')
 print(f'Message Bits  Codeword   Hamming Weight')
 code_word = np.hstack((m, c, h_mat.T))
 for r in range(code_word.shape[0]):
     format_row = " ".join(map(str, code_word[r, :k])) + '\t' + " ".join(map(str, code_word[r, k:n+k])) + '\t' + str(code_word[r, -1])
     print(format_row)
-print('**********')
+print('')
 print(f'Minimum Hamming distance : {d_min}')
 # Parity Check matrix
-print('**********')
+print('')
 print(f'Parity Check Matrix')
 for r in hp:
     print(" ".join(map(str, r)))
-print('**********')
+print('')
 print(f'Parity Check Matrix Transpose')
 for r in ht:
     print(" ".join(map(str, r)))
@@ -72,13 +72,13 @@ r_c = np.array(r_code)
 #Syndrome Calculation
 e = np.mod(np.dot(r_c, ht), 2)
 
-#print('**********')
+#print('')
 #print(f'Received codeword Matrix')
 #for r in r_c:
 #    print(" ".join(map(str, r)))
-print('**********')
+print('')
 print(f"Syndeome of given received codeword is : " + " ".join(map(str, e[0])))
-print('**********')
+print('')
 print(f'Syndrome Matrix')
 for i in range(n):
     combined_row = np.concatenate((ht[i, :], np.eye(n, dtype=int)[i,:]))
@@ -92,10 +92,10 @@ print(f"The error postion is : " + " ".join(map(str, err)))
 # Correct the error in the received codeword
 add = err + rc
 print(f"The correct codeword is : " + " " .join(map(str,add)))
-Attach the program
 ```
-# Output 
-![WhatsApp Image 2026-03-13 at 1 37 17 PM](https://github.com/user-attachments/assets/e3e232da-9be0-48e8-9898-3a1947059907)
+# Output
+![linear block code](https://github.com/user-attachments/assets/71f9cc59-2364-4b1c-a22f-2f9d5ad39b24)
 
 # Results
-Using linear block codes, errors in transmitted data can be efficiently detected and corrected, improving the reliability of communication systems without significantly increasing the data size.
+
+Thus linear block code operation for the given input is successfully verified.
